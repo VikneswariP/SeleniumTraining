@@ -1,0 +1,28 @@
+package testCases;
+
+import org.junit.Test;
+
+
+
+public class Login {
+	
+	@Test
+	public void LoginPageTestCase() {
+		
+	}
+	
+	@Test
+	public void inCorrectLogin() {
+		
+	}
+	
+	@Test
+	public void BookingHotel() {
+		
+	}
+
+	@Test
+	public void Logout() {
+		
+	}
+}

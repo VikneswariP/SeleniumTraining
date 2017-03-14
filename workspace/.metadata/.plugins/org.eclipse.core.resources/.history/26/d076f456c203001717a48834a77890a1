@@ -1,0 +1,69 @@
+package Excel;
+
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+public class Login_ExcelData {
+	private static WebDriver driver;
+	public static String excelpath, Browser, URL;
+	private static XSSFWorkbook workbook;
+		
+	public static void loadcongig() {
+		
+		excelpath = "C:/Users/admin/Desktop/Framework/Sample.xlsx";
+		XSSFWorkbook workbook = new XSSFWorkbook(excelpath);
+		URL = workbook.getSheet("Sample").getRow(1).getCell(1).getStringCellValue();
+		Browser = workbook.getSheet("Sample").getRow(1).getCell(1).getStringCellValue();
+	}
+	
+	public static void initdriver() throws IOException {
+		
+		
+		switch(workbook.getSheet("Sample").getRow(1).getCell(1).getStringCellValue()) {
+		case "Chrome":
+		System.setProperty("webdriver.chrome.driver", "C:/Users/admin/Desktop/Framework/chromedriver.exe");
+		driver = new ChromeDriver();
+		break;
+		
+		case "Firefox":
+		System.setProperty("webdriver.gecko.driver", "C:/Users/admin/Desktop/Framework/geckodriver.exe");
+		driver = new ChromeDriver();
+		break;
+		}
+	}
+	public static void main(String[] args) throws IOException, InterruptedException {
+		
+		//String 
+		initdriver();
+		for(Row row: workbook.getSheetAt(0)) {
+			//for skipping the first row in excel
+			
+			if(row==workbook.getSheetAt(0).getRow(0))
+			continue;
+			driver.get("http://www.adactin.com/HotelApp/");
+			driver.findElement(By.id("username")).sendKeys(row.getCell(0).getStringCellValue());
+			driver.findElement(By.id("password")).sendKeys(row.getCell(1).getStringCellValue());
+			driver.findElement(By.id("login")).click();
+			Thread.sleep(3000);
+
+			if(driver.findElement(By.cssSelector("img.logo")).isDisplayed()) {
+				System.out.println("Successfully Logged In");
+			} else {
+				System.out.println("Not Logged In");
+			}
+					
+		}
+		
+		
+		workbook.close();
+		driver.close();
+		
+	}
+}

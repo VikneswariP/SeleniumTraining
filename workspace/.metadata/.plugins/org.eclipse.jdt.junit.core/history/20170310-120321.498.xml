@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Login (1)" project="PageObjectModel" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="testCases.Login" time="0.863">
+    <testcase name="correctLogin" classname="testCases.Login" time="0.863"/>
+  </testsuite>
+</testrun>

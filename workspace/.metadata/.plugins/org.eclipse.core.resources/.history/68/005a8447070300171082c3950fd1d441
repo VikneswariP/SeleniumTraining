@@ -1,0 +1,34 @@
+package Excel;
+
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class ExcelReadWrite {
+	
+	public static void main(String[] args) throws IOException {
+		XSSFWorkbook workbook = new XSSFWorkbook("C:/Users/admin/Desktop/Framework/Sample.xlsx");
+		XSSFSheet sheet1 = workbook.getSheetAt(0);
+		XSSFRow row = sheet1.getRow(0);
+		XSSFCell cell = row.getCell(0);
+		int rows = 0;
+        int col = 0;
+		for(int i=0;i<row;i++){
+			
+            for(int j=0;j<col;j++){
+
+                String data=sheet1.getRow(i).getStringCellValue();
+                String data1.getCell(j).getStringCellValue();
+                System.out.println(data);                  
+            }
+        }
+		//XSSFRow row = sheet1
+				
+		//System.out.println(data);
+		workbook.close();
+	}
+}

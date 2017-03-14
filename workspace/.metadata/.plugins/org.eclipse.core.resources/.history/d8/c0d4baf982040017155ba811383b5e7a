@@ -1,0 +1,35 @@
+package Excel;
+
+import org.apache.poi.ss.usermodel.Row;
+
+
+
+
+public class TestRunner extends Login_ExcelData {
+	
+	public static void main(String[] args) {
+		for (Row row: workbook.getSheet("TestCase")) {
+			if(row == workbook.getSheet("TestCase").getRow(0)) 
+continue;
+			String locator = row.getCell(0).getStringCellValue();
+			String locatorValue = row.getCell(0).getStringCellValue();
+			String Keyword = row.getCell(0).getStringCellValue();
+			String Parameter = row.getCell(0).getStringCellValue();
+			
+			if((row.getCell(3))!= null) {
+				Parameter = row.getCell(3).getStringCellValue();
+							}
+			else {
+				Parameter = "";
+				performanceAction(locator, locatorValue, Keyword, Parameter);
+			}
+		}
+	}
+	
+public static void performanceAction(String locator, String locatorValue, String Keyword, String Parameter) {
+	switch(Keyword) {
+	case "sendText":
+		
+	}
+}
+}

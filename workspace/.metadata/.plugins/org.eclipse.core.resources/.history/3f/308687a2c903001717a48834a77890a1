@@ -1,0 +1,56 @@
+package Excel;
+
+import java.io.IOException;
+
+//import javax.swing.text.html.HTMLDocument.Iterator;
+
+import java.util.Iterator;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+//import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class ExcelReadWrite {
+	
+	public static void main(String[] args) throws IOException {
+		XSSFWorkbook workbook = new XSSFWorkbook("C:/Users/admin/Desktop/Framework/Sample.xlsx");
+		XSSFSheet sheet1 = workbook.getSheetAt(0);
+		XSSFRow row = sheet1.getRow(0);
+		XSSFCell cell = row.getCell(0);
+/*		int rows;
+        int col;
+		for(int i=0;i<rows;i++){
+			
+            for(int j=0;j<col;j++){
+
+                String data=sheet1.getRow(i);
+                System.out.println(getStringCellValue());
+                String col1.getCell(j).getStringCellValue();
+                System.out.println(data);                  
+            }
+        }
+		//XSSFRow row = sheet1*/
+				
+		//System.out.println(cell.getStringCellValue());
+		
+		//@SuppressWarnings("unused")
+		int sheetcount = workbook.getNumberOfSheets();
+		//@SuppressWarnings("unused")
+		int rowcount = sheet1.getLastRowNum();
+		int cellcount = row.getLastCellNum();
+		
+		Iterator<Row> rowIterator = sheet1.iterator();
+		while(rowIterator.hasNext()) {
+			Iterator<Cell> cellIterator = rowIterator.next().iterator();
+			while(cellIterator.hasNext()) {
+				System.out.println(cellIterator.next().getStringCellValue() + "\t");
+		}
+		}
+		workbook.close();
+	}
+	
+	}

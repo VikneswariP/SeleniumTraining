@@ -1,0 +1,37 @@
+package Excel;
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver;
+
+//import org.openqa.selenium.WebElement;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+//import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Login{
+
+public static void main(String[] args) {
+
+System.setProperty("webdriver.chrome.driver", "C:/Users/admin/Desktop/Framework/chromedriver.exe");
+
+WebDriver driver = new ChromeDriver();
+//WebDriver driver = new FirefoxDriver();
+
+driver.get("http://www.adactin.com/HotelApp/");
+
+driver.findElement(By.id("username"));
+
+driver.findElement(By.id("username")).sendKeys("Vikneswari");
+
+driver.findElement(By.id("password"));
+
+driver.findElement(By.id("password")).sendKeys("vikneswari");
+
+driver.findElement(By.id("login")).click();
+
+driver.close();
+}
+
+}

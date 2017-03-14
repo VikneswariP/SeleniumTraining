@@ -1,0 +1,43 @@
+package PageObjectModel;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class LoginPage {
+	
+	@FindBy(id= "username")
+	WebElement txtUsername;
+	
+	@FindBy(id= "password")
+	WebElement txtPassword;
+	
+	@FindBy(id= "login")
+	WebElement txtlogin;
+	
+	public WebElement getTextUsername() {
+		return txtUsername;
+	}
+	
+	public WebElement getTextPassword() {
+		return txtPassword;
+	}
+	
+	public WebElement getBtnLogin() {
+		return BtnLogin();
+		}
+	
+	public void setTextUsername(String value) {
+		txtUsername.clear();
+		txtUsername.sendKeys(value);
+	}
+	
+	public void setTextPassword(String value) {
+		txtPassword.clear();
+		txtPassword.sendKeys(value);
+	}
+	
+	public void setBtnlogin() {
+		btnlogin.click();
+		
+	}
+}

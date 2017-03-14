@@ -1,0 +1,71 @@
+package Excel;
+
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Row;
+import org.openqa.selenium.Keys;
+
+
+
+
+public class TestRunner extends Login_ExcelData {
+	
+	//private static final String LocatorValue = null;
+	//private static final String Locator = null;
+	private static KeywordDriven keywordObject = new KeywordDriven();
+
+	public static void main(String[] args) throws IOException {
+		
+		loadconfig();
+		initdriver();
+		driver.get(URL);
+		
+		
+		for (Row row: workbook.getSheet("TestCase")) {
+			if(row == workbook.getSheet("TestCase").getRow(0)) 
+				continue;
+			String locator = row.getCell(0).getStringCellValue();
+			String locatorValue = row.getCell(1).getStringCellValue();
+			String keyword = row.getCell(2).getStringCellValue();
+			String parameter;
+			
+			if((row.getCell(3))!= null) {
+				parameter = row.getCell(3).getStringCellValue();
+							}
+			else {
+				parameter = "";
+				
+			}
+			performanceAction(locator, locatorValue, keyword, parameter);
+			
+		}
+		
+		//driver.close();
+	}
+	
+	public static void performanceAction(String locator, String locatorValue, String keyword, String parameter) {
+		switch(keyword) {
+		
+		//Since we wrote BY class in KeywordDriven we can also write the function as below
+		//keywordObject.sendText(getByObject(locator, locatorValue), parameter);
+		case "sendText":
+			keywordObject.sendText(locator, locatorValue, parameter);
+			break;
+			
+		case "click":
+		keywordObject.click(locator, locatorValue);
+		break;
+		
+		case "VerifyText":
+			keywordObject.VerifyText(locator, locatorValue, parameter);
+			break;
+		
+		case "listSelect":
+			keywordObject.listSelect(getByObject(locator, locatorValue), parameter);
+			break;	
+			
+		}
+
+	}
+
+}

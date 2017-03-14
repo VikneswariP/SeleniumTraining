@@ -1,0 +1,21 @@
+package pageClasses;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Base {
+	
+	private static WebDriver driver;
+	
+	public static WebDriver getDriver() {
+		if(driver == null) {
+			System.setProperty("webdriver.chrome.driver", "C:/Users/admin/Desktop/Framework/chromedriver.exe");
+			driver = new ChromeDriver();
+			
+			driver.get("http://www.adactin.com/HotelApp/");
+		}
+	return driver;
+	}
+	
+	
+}

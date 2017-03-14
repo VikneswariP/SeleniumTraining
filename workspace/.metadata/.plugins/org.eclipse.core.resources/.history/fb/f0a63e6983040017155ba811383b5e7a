@@ -1,0 +1,17 @@
+package Excel;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+public class KeywordDriven extends Login_ExcelData {
+	
+	public void sendText(String locator, String locatorValue, String Parameter) {
+		WebElement element = driver.findElement(By.id(locatorValue));
+		element.sendKeys(Parameter);
+	}
+	
+	public void click(String locator, String locatorValue, String Parameter) {
+		WebElement element = driver.findElement(By.id(locatorValue));
+		element.click();
+	}
+}

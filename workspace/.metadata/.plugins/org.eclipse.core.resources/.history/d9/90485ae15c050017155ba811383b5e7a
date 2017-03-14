@@ -1,0 +1,55 @@
+package pageClasses;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class LoginPage {
+	
+	@FindBy(id= "username")
+	WebElement txtUsername;
+	
+	@FindBy(id= "password")
+	WebElement txtPassword;
+	
+	@FindBy(id= "login")
+	WebElement btnlogin;
+	
+	@FindBy(xpath = "//*[@id=login_form]/table/tbody/tr[5]/td[2]/div/b")
+	WebElement txtInvalidLogin;
+	
+	public LoginPage() {
+		PageFactory.initElements(Base.getDriver(), this);
+	}
+	
+	public WebElement getTextUsername() {
+		return txtUsername;
+	}
+	
+	public WebElement getTextPassword() {
+		return txtPassword;
+	}
+	
+	public WebElement getBtnLogin() {
+		return btnlogin;
+		}
+	
+	public WebElement getTextInvalidLogin() {
+		return txtInvalidLogin;
+		}
+	
+	public void setTextUsername(String value) {
+		txtUsername.clear();
+		txtUsername.sendKeys(value);
+	}
+	
+	public void setTextPassword(String value) {
+		txtPassword.clear();
+		txtPassword.sendKeys(value);
+	}
+	
+	public void setBtnlogin() {
+		btnlogin.click();
+		
+	}
+}

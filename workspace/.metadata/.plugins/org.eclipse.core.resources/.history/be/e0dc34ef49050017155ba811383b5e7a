@@ -1,0 +1,9 @@
+package PageObjectModel;
+
+public class LoginPage {
+	
+	@FindBy(id= "username");
+	WebElement txtUsername;
+	
+	
+}

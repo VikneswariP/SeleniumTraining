@@ -1,0 +1,50 @@
+package unitTests;
+
+
+import org.junit.Assert;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import pageClasses.Base;
+import pageClasses.LoginPage;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING) //Ensuring to run the test in ascending order
+public class LoginPageTestCase {
+	LoginPage loginpage = new LoginPage();
+	
+	@Test
+	public void testatxtUsername() {
+		loginpage.setTextUsername("Vikneswari");
+	Assert.assertEquals("Vikneswari", loginpage.getTextUsername());
+		
+	}
+	
+	@Test
+	public void testbtxtPassword() {
+		loginpage.setTextPassword("vikneswari");
+	Assert.assertEquals("vikneswari", loginpage.getTextPassword());
+		
+	}
+	
+	@Test
+	public void testcbtnlogin() {
+		loginpage.setTextUsername("Vikneswari");
+		loginpage.setTextPassword("vikneswari");
+		loginpage.setBtnlogin();
+		
+	Assert.assertEquals("AdactIn.com - Search Hotel", Base.getDriver().getTitle());
+	System.out.println(Base.getDriver().getTitle());
+	}
+	
+	public void testdInvalidlogin() {
+		loginpage.setTextUsername("Vikneswari");
+		loginpage.setTextPassword("vik");
+		loginpage.setBtnlogin();
+		loginpage.getTextInvalidLogin("Invalid Login");
+		
+		System.out.println("Invalid Login");
+	}
+	
+	
+}

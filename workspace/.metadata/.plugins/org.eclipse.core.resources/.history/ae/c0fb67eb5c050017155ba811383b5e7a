@@ -1,0 +1,34 @@
+package testCases;
+
+import org.junit.Test;
+
+import pageClasses.LoginPage;
+
+
+
+public class Login {
+	
+	LoginPage loginpage = new LoginPage();
+	
+	@Test
+	public void correctLogin() {
+		loginpage.setTextUsername("Vikneswari");
+		loginpage.setTextPassword("vikneswari");
+		loginpage.setBtnlogin();
+	}
+	
+	/*@Test
+	public void inCorrectLogin() {
+		
+	}
+	
+	@Test
+	public void BookingHotel() {
+		
+	}
+
+	@Test
+	public void Logout() {
+		
+	}*/
+}
